@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        <style type="text/css">   
+            
+            
+            body{
+                
+                margin:0;
+                background-color: #333333;
+               
+                
+            }
+            
+            .content{
+                text-align: center;
+                font-family: cursive;
+                color:white;
+                position:relative;
+                display:inline-block;
+                
+            }
+            
+            .title_game{
+                display:inline-block;
+                width:653px;
+                height:226px;
+                background-image:url('mobile/LCD_Display.png');
+               
+            }
+            
+            h1{
+                font-size: 30px;
+                margin-top:9.1%;
+                padding:0;
+            }
+            
+            #s_div{
+                width:653px;
+                border:1px dotted grey;
+                display:inline-block;
+                margin-top:10px;
+                margin-bottom:10px;
+                
+            }
+            
+            #score{
+                font-size: 40px;   
+                font-family:monospace;
+                margin:10px;
+                padding:0;
+                color:black;
+                background-color: white;
+            }
+            
+            .table_game{
+                display: inline-block;
+            }
+            .shinySquer{
+                
+                border:none;
+                width:201px;
+                height:201px;
+                
+            }
+            .shinySquer:hover{
+                
+                cursor: pointer;
+            
+            }
+            
+            #start{
+                display:inline-block;
+                width:644px;
+                height:219px;
+                background-image:url('mobile/start_button-unpressed.png');
+               
+            }
+            
+            #start:hover{
+                cursor: pointer;
+            }
+            
+            .sounds_hidden{
+                display:none;
+            }
+			
+			.sheep{
+				position:absolute;
+				top:35%;
+				right:30px;
+				display:none;
+			}
+            
+            @media screen and (min-width:700px)
+            {
+                body{
+                
+                margin:0;
+                background-color: #333333;
+                text-align: center;
+               
+                
+            }
+            
+            .content{
+                margin-top:50px;
+                text-align: center;
+                font-family: cursive;
+                color:white;
+                width:640px;
+                display:inline-block;
+				position:relative;
+                
+            }
+            
+            .title_game{
+                display:inline-block;
+                width:653px;
+                height:226px;
+                background-image:url('mobile/LCD_Display.png');
+               
+            }
+            
+            h1{
+                font-size: 30px;
+                margin-top:9.1%;
+                padding:0;
+            }
+            
+            #s_div{
+                width:653px;
+                border:1px dotted grey;
+                display:inline-block;
+                margin-top:10px;
+                margin-bottom:10px;
+                
+            }
+            
+            #score{
+                font-size: 20px;   
+                font-family:monospace;
+                margin:10px;
+                padding:0;
+                color:black;
+                background-color: white;
+            }
+                
+                
+            
+            .table_game{
+                display: inline-block;
+            }
+                
+                
+            .shinySquer{
+                
+                border:none;
+                width:112px;
+                height:112px;
+                background-size: cover;
+                
+            }
+            .shinySquer:hover{
+                
+                cursor: pointer;
+            
+            }
+            
+            #start{
+                display:inline-block;
+                width:470px;
+                height:162px;
+                background-image:url('mobile/start_button-unpressed.png');
+                background-size: cover;
+               
+            }
+            
+            #start:hover{
+                cursor: pointer;
+            }
+            
+            .sounds_hidden{
+                display:hidden;
+            }
+			
+			.sheep{
+				position:absolute;
+				top:25%;
+				right:30px;
+				display:none;
+			}
+                
+            }
+           
+            
+        
+        </style>
+    </head>
+    
+    <body>
+        
+        <audio controls id="a0" class="sounds_hidden">
+            <source src="sounds/a5.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a1" class="sounds_hidden">
+            <source src="sounds/a5s.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a2" class="sounds_hidden">
+            <source src="sounds/b5.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a3" class="sounds_hidden">
+            <source src="sounds/c5.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a4" class="sounds_hidden">
+            <source src="sounds/e5.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a5" class="sounds_hidden">
+            <source src="sounds/g3.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a6" class="sounds_hidden">
+            <source src="sounds/g4.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a7" class="sounds_hidden">
+            <source src="sounds/g4s.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a8" class="sounds_hidden">
+            <source src="sounds/g5.mp3" type="audio/mp3">
+        </audio>
+        
+        <audio controls id="a9" class="sounds_hidden">
+            <source src="sounds/eh.mp3" type="audio/mp3">
+        </audio>
+        
+        <div class="content">
+            <div class="title_game"><h1>SIMON SAYS</h1></div>
+            <div id="s_div"><p id="score">Welcome To Simon!</p></div>
+            
+            <div class="table_game">
+                <div id="_sheep"class="sheep">
+					
+					<img src="mobile/sheep.png">
+				
+				</div>
+                <table>
+                
+                    <tr>
+                        <td><div style="background-image:url('mobile/button-1-off.png');" onclick="userInput(0)" class="shinySquer" id="0"></div></td>
+                        <td><div style="background-image:url('mobile/button-2-off.png');" onclick="userInput(1)" class="shinySquer" id="1"></div></td>
+                        <td><div style="background-image:url('mobile/button-3-off.png');" onclick="userInput(2)" class="shinySquer" id="2"></div></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><div style="background-image:url('mobile/button-4-off.png');" onclick="userInput(3)" class="shinySquer" id="3"></div></td>
+                        <td><div style="background-image:url('mobile/button-5-off.png');" onclick="userInput(4)" class="shinySquer" id="4"></div></td>
+                        <td><div style="background-image:url('mobile/button-6-off.png');" onclick="userInput(5)" class="shinySquer" id="5"></div></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><div style="background-image:url('mobile/button-7-off.png');" onclick="userInput(6)" class="shinySquer" id="6"></div></td>
+                        <td><div style="background-image:url('mobile/button-8-off.png');" onclick="userInput(7)" class="shinySquer" id="7"></div></td>
+                        <td><div style="background-image:url('mobile/button-9-off.png');" onclick="userInput(8)" class="shinySquer" id="8"></div></td>
+                    </tr>
+                
+                </table>
+                
+            </div>
+            
+            <div><div id="start" onclick="start_game()"></div></div>
+            
+        </div>
+    
+    
+    
+    </body>
+
+
+
+</html>
